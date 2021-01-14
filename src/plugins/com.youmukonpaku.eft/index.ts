@@ -1,15 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-01-13 20:39:14
- * @LastEditTime: 2021-01-14 16:09:54
+ * @LastEditTime: 2021-01-14 16:20:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /uuz.youmukonpaku.com/src/plugins/com.youmukonpaku.eft/index.ts
  */
 import request from 'request';
 import UUZ from '../../framework';
-import { TextMessage } from '../../framework/types/shugen.type';
-import { Handler } from '../../handler/types/index.type';
+import { TextMessage, Handler } from '../types';
 
 const sendMsg = (uuz: UUZ, data: TextMessage, msg: any) => {
   uuz.sendGroupMsg.sendCardMsg(data.channelId, msg.map((v: any) => {
