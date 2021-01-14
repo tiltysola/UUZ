@@ -1,17 +1,18 @@
 /*
  * @Author: your name
  * @Date: 2021-01-13 20:39:14
- * @LastEditTime: 2021-01-14 15:41:20
+ * @LastEditTime: 2021-01-14 16:09:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /uuz.youmukonpaku.com/src/plugins/com.youmukonpaku.eft/index.ts
  */
 import request from 'request';
 import UUZ from '../../framework';
+import { TextMessage } from '../../framework/types/shugen.type';
 import { Handler } from '../../handler/types/index.type';
 
-const sendMsg = (uuz: UUZ, data: any, msg: any) => {
-  uuz.sendGroupMsg.sendCardMsg(data.target_id, msg.map((v: any) => {
+const sendMsg = (uuz: UUZ, data: TextMessage, msg: any) => {
+  uuz.sendGroupMsg.sendCardMsg(data.channelId, msg.map((v: any) => {
     return {
       type: 'card',
       theme: 'info',
@@ -47,8 +48,8 @@ const sendMsg = (uuz: UUZ, data: any, msg: any) => {
   }));
 };
 
-const sendMsgAmmo = (uuz: UUZ, data: any, msg: any) => {
-  uuz.sendGroupMsg.sendKMarkdownMsg(data.target_id, `弹药类型\t\t伤害\t\t穿甲\t\t甲伤\t\t精准度\t后座力\t碎弹率\n${
+const sendMsgAmmo = (uuz: UUZ, data: TextMessage, msg: any) => {
+  uuz.sendGroupMsg.sendKMarkdownMsg(data.channelId, `弹药类型\t\t伤害\t\t穿甲\t\t甲伤\t\t精准度\t后座力\t碎弹率\n${
     msg.map((v: any) => {
       return `**${v.shortName}**\t${v.shortName.length < 4 ? '\t' : ''}${v.shortName.length < 8 ? '\t' : ''}` +
         `${v.damage}\t\t` +
@@ -62,8 +63,8 @@ const sendMsgAmmo = (uuz: UUZ, data: any, msg: any) => {
 
 const handler: Handler = {
   enable: true,
-  onRaw: ({ data, uuz }) => {
-    if (data.content.substr(0, 1) === '!') {
+  onText: ({ data, uuz }) => {
+    if (['.', '!', '！'].includes(data.content.substr(0, 1))) {
       const msg = data.content.substr(1).split(' ');
       if (msg[0] === '物价' || msg[0] === 'price') {
         request({
