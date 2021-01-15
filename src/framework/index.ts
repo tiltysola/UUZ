@@ -2,7 +2,7 @@
  * @Author: YoumuKonpaku
  * @Website: https://youmukonpaku.com
  * @Date: 2021-01-14 10:42:47
- * @LastEditTime: 2021-01-14 15:57:10
+ * @LastEditTime: 2021-01-15 10:42:46
  */
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
@@ -13,7 +13,7 @@ import { decryptRequest } from './utils';
 
 import { UConfig, UEventEmitter, UConfigEncrypt, USN } from './types/uuz.type';
 import { KaiheilaEventRequest } from './types/kaiheila.type';
-import { AudioMessage, FileMesage as FileMessage, ImageMessage, KMarkDownMessage, TextMessage, VideoMessage } from './types/shugen.type';
+import { AudioMessage, FileMessage, ImageMessage, KMarkDownMessage, TextMessage, VideoMessage } from './types/shugen.type';
 
 class UUZ extends events.EventEmitter implements UEventEmitter {
   private app: Koa;
@@ -44,6 +44,11 @@ class UUZ extends events.EventEmitter implements UEventEmitter {
           this.emit('error', 'Undecrypted message!');
           return;
         }
+      }
+
+      if (!request.d) {
+        this.emit('error', 'Unsupported message!');
+        return;
       }
 
       this.verifyRequest(request);

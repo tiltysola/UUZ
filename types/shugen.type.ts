@@ -1,8 +1,8 @@
 /*
  * @Author: YoumuKonpaku
  * @Website: https://youmukonpaku.com
- * @Date: 2021-01-14 11:16:28
- * @LastEditTime: 2021-01-15 10:46:03
+ * @Date: 2021-01-15 10:46:20
+ * @LastEditTime: 2021-01-15 10:46:21
  */
 import { KHAuthor, KHTextMessage, KHEventBase, KHImageMessage, KHAttachment, KHVideoAttachment, KHVideoMessage, KHFileAttachment, KHFileMessage, KHAudioAttachment, KHKMarkDownMessage, KHAudioMessage } from './kaiheila.type';
 

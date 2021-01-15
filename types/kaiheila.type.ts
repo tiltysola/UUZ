@@ -1,8 +1,8 @@
 /*
  * @Author: YoumuKonpaku
  * @Website: https://youmukonpaku.com
- * @Date: 2021-01-14 10:51:58
- * @LastEditTime: 2021-01-15 10:47:16
+ * @Date: 2021-01-15 10:36:13
+ * @LastEditTime: 2021-01-15 10:39:18
  */
 export enum KaiheilaCMD {
   msg = 0,
