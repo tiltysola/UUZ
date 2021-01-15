@@ -2,7 +2,7 @@
  * @Author: YoumuKonpaku
  * @Website: https://youmukonpaku.com
  * @Date: 2021-01-14 15:19:43
- * @LastEditTime: 2021-01-15 17:56:42
+ * @LastEditTime: 2021-01-15 22:57:21
  */
 import request from 'request';
 import { Card } from './types/card.type';
@@ -38,8 +38,13 @@ export class UGroupMsg {
     }));
   }
 
-  sendCardMsg(channel: string, card: Card | Card[]) {
+  sendCardMsg(channel: string, card: Card[]) {
     sendRequest(this.token, JSON.stringify({
+      object_name: 10,
+      channel_id: channel,
+      content: JSON.stringify(card),
+    }));
+    console.log(JSON.stringify({
       object_name: 10,
       channel_id: channel,
       content: JSON.stringify(card),
