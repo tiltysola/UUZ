@@ -2,7 +2,7 @@
  * @Author: YoumuKonpaku
  * @Website: https://youmukonpaku.com
  * @Date: 2021-01-15 10:46:20
- * @LastEditTime: 2021-01-15 10:46:21
+ * @LastEditTime: 2021-01-15 17:20:15
  */
 import { KHAuthor, KHTextMessage, KHEventBase, KHImageMessage, KHAttachment, KHVideoAttachment, KHVideoMessage, KHFileAttachment, KHFileMessage, KHAudioAttachment, KHKMarkDownMessage, KHAudioMessage } from './kaiheila.type';
 
@@ -16,6 +16,7 @@ function defaultUser() {
     roles: [],
     bot: false,
     online: true,
+    os: '',
   };
 }
 
@@ -37,6 +38,7 @@ export class User {
   nickname: string;
   roles: number[];
   online: boolean;
+  os: string;
 
   constructor(rawAuthor: KHAuthor|User = defaultUser()) {
     const author = defaultUser();
@@ -50,6 +52,7 @@ export class User {
     this.nickname = author.nickname;
     this.roles = Array.isArray(author.roles) ? author.roles : [];
     this.online = !!author.online;
+    this.os = author.os;
   }
 }
 
