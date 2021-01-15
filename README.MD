@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-14 15:58:10
- * @LastEditTime: 2021-01-16 00:21:14
- * @LastEditors: your name
+ * @LastEditTime: 2021-01-16 00:38:49
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /uuz.youmukonpaku.com/README.MD
 -->
@@ -30,4 +30,90 @@ UUZ
 |   ├── plugins 插件目录
 |   └── index.ts 主程序入口
 └── types 存放types相关文件，仅用于存档。
+```
+
+## 插件结构
+
+```
+import UUZ from '../../framework';
+import { TextMessage, Handler } from '../types';
+
+const getChannelId = (data: TextMessage, uuz: UUZ) => {
+  uuz.sendGroupMsg.sendTextMsg(data.channelId, `当前频道ID：${data.channelId}`);
+};
+
+const commands: any = {
+  获取频道id: getChannelId,
+};
+
+const handler: Handler = {
+  channel: {
+    allow: ['*'],
+    deny: [],
+  },
+  enable: true,
+  onInit: () => { },
+  onRaw: () => { },
+  onSystem: () => { },
+  onText: ({ data, uuz }) => {
+    if (commands[data.content.toLowerCase()]) {
+      commands[data.content.toLowerCase()](data, uuz);
+    }
+  },
+  onImage: () => { },
+  onVideo: () => { },
+  onFile: () => { },
+  onAudio: () => { },
+  onKMarkdown: () => { },
+  onUnknown: () => { },
+};
+
+export default handler;
+```
+
+## 发送信息
+
+```
+import UUZ from '../../framework';
+
+// 处理消息
+onText: ({ data, uuz }) => {
+  getChannelId(data, uuz);
+},
+
+// 发送文字消息
+const getChannelId = (data: TextMessage, uuz: UUZ) => {
+  uuz.sendGroupMsg.sendTextMsg(data.channelId, `当前频道ID：${data.channelId}`);
+};
+
+// 发送KMarkdown消息
+const getChannelId = (data: TextMessage, uuz: UUZ) => {
+  uuz.sendGroupMsg.sendKmarkdownMsg(data.channelId, `当前频道ID：${data.channelId}`);
+};
+
+// 发送卡片消息
+import Card from '../../framework/card';
+
+const getChannelId = (data: TextMessage, uuz: UUZ) => {
+  uuz.sendGroupMsg.sendCardMsg(data.channelId, [new Card.Card({
+    modules: [
+      new Card.TitleModule({
+        text: {
+          type: 'plain-text',
+          content: `${data.channelId}`,
+        },
+      }),
+      new Card.ContentModule({
+        mode: 'left',
+        text: new Card.KmarkdownElement({
+          content: `**KmarkdownMessage**`,
+        }),
+        accessory: new Card.ImageElement({
+          src: `{imageUrl}`,
+          circle: false,
+        }),
+      }),
+    ],
+  })]);
+};
 ```
