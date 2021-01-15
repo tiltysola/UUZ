@@ -2,10 +2,10 @@
  * @Author: YoumuKonpaku
  * @Website: https://youmukonpaku.com
  * @Date: 2021-01-14 17:37:29
- * @LastEditTime: 2021-01-15 11:31:28
+ * @LastEditTime: 2021-01-15 11:44:40
  */
 export interface Card {
-  type: 'card';
+  type?: 'card';
   theme?: 'primary' | 'warning' | 'danger' | 'info' | string;
   size?: 'sm' | 'lg';
   color?: string;
@@ -13,7 +13,7 @@ export interface Card {
 }
 
 export interface TitleModule {
-  type: 'header';
+  type?: 'header';
   text: {
     type: 'plain-text';
     content: string;
@@ -21,58 +21,58 @@ export interface TitleModule {
 }
 
 export interface ContentModule {
-  type: 'section';
+  type?: 'section';
   mode?: 'left' | 'right';
   text: TextElement | KmarkdownElement | ParagraphStruct;
   accessory?: ImageElement | ButtonElement;
 }
 
 export interface ImageModule {
-  type: 'image-group';
+  type?: 'image-group';
   elements: ImageElement[];
 }
 
 export interface ActionModule {
-  type: 'action-group';
+  type?: 'action-group';
   elements: ButtonElement[];
 }
 
 export interface ContextModule {
-  type: 'context';
+  type?: 'context';
   elements: Array<TextElement | KmarkdownElement | ImageElement>;
 }
 
 export interface DividerModule {
-  type: 'divider';
+  type?: 'divider';
 }
 
 export interface FileModule {
-  type: 'file' | 'audio' | 'video';
+  type?: 'file' | 'audio' | 'video';
   src: string;
   title: string;
   cover?: string;
 }
 
 export interface CountdownModule {
-  type: 'countdown';
+  type?: 'countdown';
   endTime: number;
   startTime: number;
   mode: 'day' | 'hour' | 'second';
 }
 
 export interface TextElement {
-  type: 'plain-text';
+  type?: 'plain-text';
   content: string;
   emoji?: boolean;
 }
 
 export interface KmarkdownElement {
-  type: 'kmarkdown';
+  type?: 'kmarkdown';
   content: string;
 }
 
 export interface ImageElement {
-  type: 'image';
+  type?: 'image';
   src: string;
   alt?: string;
   size?: 'sm' | 'lg';
@@ -80,7 +80,7 @@ export interface ImageElement {
 }
 
 export interface ButtonElement {
-  type: 'button';
+  type?: 'button';
   theme?: 'primary' | 'warning' | 'danger' | 'info' | string;
   value: string;
   click: 'link' | 'return-val';
@@ -88,7 +88,7 @@ export interface ButtonElement {
 }
 
 export interface ParagraphStruct {
-  type: 'paragraph';
+  type?: 'paragraph';
   cols: number;
   fields: Array<TextElement | KmarkdownElement | ContextModule>;
 }

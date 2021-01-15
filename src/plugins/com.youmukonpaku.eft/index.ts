@@ -1,49 +1,42 @@
 /*
  * @Author: your name
  * @Date: 2021-01-13 20:39:14
- * @LastEditTime: 2021-01-14 16:20:10
+ * @LastEditTime: 2021-01-15 11:56:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /uuz.youmukonpaku.com/src/plugins/com.youmukonpaku.eft/index.ts
  */
 import request from 'request';
 import UUZ from '../../framework';
+import Card from '../../framework/card';
 import { TextMessage, Handler } from '../types';
 
 const sendMsg = (uuz: UUZ, data: TextMessage, msg: any) => {
   uuz.sendGroupMsg.sendCardMsg(data.channelId, msg.map((v: any) => {
-    return {
-      type: 'card',
-      theme: 'info',
-      color: '#aaaaaa',
+    return new Card.Card({
       modules: [
-        {
-          type: 'header',
+        new Card.TitleModule({
           text: {
             type: 'plain-text',
             content: `${v.name}`,
           },
-        },
-        {
-          type: 'section',
+        }),
+        new Card.ContentModule({
           mode: 'left',
-          text: {
-            type: 'kmarkdown',
+          text: new Card.KmarkdownElement({
             content: `最近成交价格： ${v.price}₽\n` +
             `基准价格： ${v.basePrice}₽\n` +
             `24小时成交价格： ${v.avg24hPrice}₽ (${v.diff24h > 0 ? '+' : ''}${v.diff24h}%)\n` +
             `近7日成交价格： ${v.avg7daysPrice}₽ (${v.diff7days > 0 ? '+' : ''}${v.diff7days}%)\n` +
             `${v.traderName}价格： ${v.traderPrice}${v.traderPriceCur}\n`,
-            emoji: false,
-          },
-          accessory: {
-            type: 'image',
+          }),
+          accessory: new Card.ImageElement({
             src: `https://eft.acgme.cn/image?uid=${v.uid}`,
             circle: false,
-          },
-        },
+          }),
+        }),
       ],
-    };
+    });
   }));
 };
 
