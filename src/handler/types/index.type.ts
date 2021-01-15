@@ -2,7 +2,7 @@
  * @Author: YoumuKonpaku
  * @Website: https://youmukonpaku.com
  * @Date: 2021-01-14 11:49:51
- * @LastEditTime: 2021-01-15 17:52:58
+ * @LastEditTime: 2021-01-15 23:58:17
  */
 import UUZ from '../../framework';
 import { AudioMessage, FileMessage, ImageMessage, KMarkDownMessage, TextMessage, VideoMessage } from '../../framework/types/custom.type';

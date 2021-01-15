@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-13 20:39:14
- * @LastEditTime: 2021-01-15 23:56:26
+ * @LastEditTime: 2021-01-16 00:08:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /uuz.youmukonpaku.com/src/plugins/com.youmukonpaku.eft/index.ts
@@ -169,6 +169,10 @@ const commands: any = {
 };
 
 const handler: Handler = {
+  channel: {
+    allow: ['5959506090185415'],
+    deny: [],
+  },
   enable: true,
   onText: ({ data, uuz }) => {
     if (['.', '!', '！'].includes(data.content.substr(0, 1))) {
