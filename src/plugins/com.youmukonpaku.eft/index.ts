@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-13 20:39:14
- * @LastEditTime: 2021-01-15 17:57:17
+ * @LastEditTime: 2021-01-15 17:58:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /uuz.youmukonpaku.com/src/plugins/com.youmukonpaku.eft/index.ts
@@ -112,7 +112,6 @@ const commands: any = {
 const handler: Handler = {
   enable: true,
   onText: ({ data, uuz }) => {
-    console.log(data);
     if (['.', '!', '！'].includes(data.content.substr(0, 1))) {
       const msg = data.content.substr(1).split(' ');
       if (commands[msg[0].toLowerCase()]) {
