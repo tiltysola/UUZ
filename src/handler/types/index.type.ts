@@ -2,10 +2,10 @@
  * @Author: YoumuKonpaku
  * @Website: https://youmukonpaku.com
  * @Date: 2021-01-14 11:49:51
- * @LastEditTime: 2021-01-14 15:49:59
+ * @LastEditTime: 2021-01-15 17:52:58
  */
 import UUZ from '../../framework';
-import { AudioMessage, FileMesage as FileMessage, ImageMessage, KMarkDownMessage, TextMessage, VideoMessage } from '../../framework/types/shugen.type';
+import { AudioMessage, FileMessage, ImageMessage, KMarkDownMessage, TextMessage, VideoMessage } from '../../framework/types/custom.type';
 
 export interface Handler {
   channel?: {

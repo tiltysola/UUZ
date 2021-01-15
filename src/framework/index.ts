@@ -13,7 +13,7 @@ import { decryptRequest } from './utils';
 
 import { UConfig, UEventEmitter, UConfigEncrypt, USN } from './types/uuz.type';
 import { KaiheilaEventRequest } from './types/kaiheila.type';
-import { AudioMessage, FileMessage, ImageMessage, KMarkDownMessage, TextMessage, VideoMessage } from './types/shugen.type';
+import { AudioMessage, FileMessage, ImageMessage, KMarkDownMessage, TextMessage, VideoMessage } from './types/custom.type';
 
 class UUZ extends events.EventEmitter implements UEventEmitter {
   private app: Koa;

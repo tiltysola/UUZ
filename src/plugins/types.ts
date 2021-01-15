@@ -7,4 +7,4 @@
 export * from '../handler/types/index.type';
 export * from '../framework/types/uuz.type';
 export * from '../framework/types/kaiheila.type';
-export * from '../framework/types/shugen.type';
+export * from '../framework/types/custom.type';
